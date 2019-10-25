@@ -7,6 +7,8 @@
 #例题为第2题
 #参数设置为6-A,6-B,6-C的参数
 #如果你还没看题目，希望你先去看看这一题，用书上说的解析法过一遍再来看，会好理解很多
+#在安装好包的前提下,此代码可直接运行
+
 
 #为了便于新手理解，一些地方的代码没有用程序员的方式写，大佬轻喷
 #我的作品绝非绝对正确，请以批判的眼光看待，如果能改正则更好
@@ -18,6 +20,7 @@ import numpy as np
 from math import cos,sin,pi
 from matplotlib import pyplot as plt 
 import matplotlib
+import pandas as pd
 #这里的设置是为了让表里标题的中文能正常显示，如果你不懂复制就好。如果你想了解更多，百度这个函数名，会有相关解释。
 matplotlib.rcParams["font.family"]="Microsoft YaHei"
 
@@ -25,10 +28,10 @@ matplotlib.rcParams["font.family"]="Microsoft YaHei"
 
 #这个地方就是参数设置的地方，对，我的名字叫刘政东
 #LAB即是6-A的参数
-LAB = 220
+LAB = 200
 
 #这里设置最后导出图像文件的名字
-name = "张勉之"
+name = "刘政东"
 
 #这里是非线性方程解法的初始值的全局参数，不懂没关系，接着看。
 parameter1=100
@@ -39,8 +42,10 @@ parameter5=700
 
 
 #这个是我自编写的修复函数的精准度的调和值，值越小，修复程度越高，图像损失程度越大。
-#其实在大部分题目里应该是不需要使用修复函数的。
-accuracy = 50
+#其实在大部分题目里该是不需要使用修复函数的。
+
+#修改为1和10000查看区别
+accuracy = 10000
 
 
 #定义函数
@@ -377,9 +382,17 @@ plt.show()
 
 
 
+#最后是在本地目录生成文件
+data_1  = pd.DataFrame()
+data_1['s1'],data_1['th2'],data_1['th3'],data_1['lc0'],data_1['s2'] = r0,r1,r2,r3,r4
+data_1.to_csv(name+'x.csv',encoding='utf-8')
 
 
+data_2  = pd.DataFrame()
+data_2['vs1'],data_2['w2'],data_2['s3'],data_2['v0'] = w0,w1,w2,w3
+data_2.to_csv(name+'v.csv',encoding='utf-8')
 
 
-
-
+data_3  = pd.DataFrame()
+data_3['a_s1'],data_3['a2'],data_3['a3'],data_3['a_lc0'] = A0,A1,A2,A3
+data_3.to_csv(name+'a.csv',encoding='utf-8')
